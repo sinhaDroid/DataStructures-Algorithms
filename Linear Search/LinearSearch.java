@@ -2,14 +2,15 @@
 // is present  then return its  location,  otherwise
 // return -1
 
+
 import java.io.*;
 
 
 class LinearSearch {
 
     // This function returns index of element x in arr[]
-    int search(int arr[], int n, int x) {
-        for(int i = 0; i < n; i++) {
+    int search(int arr[], int x) {
+        for(int i = 0; i < arr.length; i++) {
             // Return the index of the element if the element
 			// is found
             if(arr[i] == x)
@@ -29,7 +30,7 @@ class LinearSearch {
         // Test
         // Should print index of 12 i.e., 5
         LinearSearch linearSearch = new LinearSearch();
-        res = linearSearch.search(arr, arr.length, 12);
+        res = linearSearch.search(arr, 12);
 
         System.out.println(res);
 	}
