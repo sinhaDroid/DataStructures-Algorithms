@@ -33,7 +33,7 @@ def days_between_dates(y1, m1, d1, y2, m2, d2):
     # Count total number of days before second date
     days2 = countDaysBefore(y2, m2, d2)
     
-    # return difference between two days
+    # return difference between two
     return days2 - days1
 
 def test_days_between_dates():
