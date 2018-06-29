@@ -75,12 +75,15 @@ def KruskalMST(graph, vertices, int_vertices):
         if x != y:
             e = e + 1
             result.append([u, v, w])
+            # Include reverse edge and value
+            result.append([v, u, w])
             union(parent, rank, x, y)
         # Else discard the edge
 
     # print the contents of result[] to display the built MST
     # and append in final_result
 
+    temp = []
     final_result = {}
 
     print("Following are the edges in the constructed MST")
@@ -88,8 +91,13 @@ def KruskalMST(graph, vertices, int_vertices):
         # print str(u) + " -- " + str(v) + " == " + str(weight)
         u = int_vertices[u]
         v = int_vertices[v]
-        print("%c -- %c == %d" % (u, v, weight))
-        final_result(u, [v, weight])
+        # print("%c -- %c == %d" % (u, v, weight))
+        temp = (v, weight)
+
+        if u not in final_result:
+            final_result[u] = [temp]
+        else:
+            final_result[u].append(temp)
 
     return final_result
 
@@ -107,7 +115,7 @@ def question3(G):
     temp_vertices = {}
     int_vertices = {}
     count = 0
-        
+
     # keys in vertices
     vertices = G.keys()
 
@@ -115,24 +123,33 @@ def question3(G):
         temp_vertices[i] = count
         int_vertices[count] = i
         count += 1
-    
+
     for vertice in vertices:
         for edge in G[vertice]:
-            addEdge(temp_vertices[vertice], temp_vertices[edge[0]], edge[1], graph)
+            addEdge(temp_vertices[vertice],
+                    temp_vertices[edge[0]], edge[1], graph)
 
     return KruskalMST(graph, count, int_vertices)
 
 
-# G = {'A': [('B', 2)],
-#      'B': [('A', 2), ('C', 5)],
-#      'C': [('B', 5)]}
+G = {'A': [('B', 2)],
+     'B': [('A', 2), ('C', 5)],
+     'C': [('B', 5)]}
 
-G = {'A': [('B', 7), ('D', 5)],
-         'B': [('A', 7), ('C', 8), ('D', 9), ('E', 7)],
-         'C': [('B', 8), ('E', 5)],
-         'D': [('A', 5), ('B', 9), ('E', 15), ('F', 6)],
-         'E': [('B', 7), ('C', 5), ('D', 15), ('F', 8), ('G', 9)],
-         'F': [('D', 6), ('E', 8), ('G', 11)],
-         'G': [('E', 9), ('F', 11)]}
+# G = {'A': [('B', 7), ('D', 5)],
+#      'B': [('A', 7), ('C', 8), ('D', 9), ('E', 7)],
+#      'C': [('B', 8), ('E', 5)],
+#      'D': [('A', 5), ('B', 9), ('E', 15), ('F', 6)],
+#      'E': [('B', 7), ('C', 5), ('D', 15), ('F', 8), ('G', 9)],
+#      'F': [('D', 6), ('E', 8), ('G', 11)],
+#      'G': [('E', 9), ('F', 11)]}
+
+H = {'A': [('D', 5), ('B', 7)],
+     'B': [('A', 7), ('E', 7)],
+     'C': [('E', 5)],
+     'D': [('A', 5), ('F', 6)],
+     'E': [('C', 5), ('B', 7), ('G', 9)],
+     'F': [('D', 6)],
+     'G': [('E', 9)]}
 
 print(question3(G))
