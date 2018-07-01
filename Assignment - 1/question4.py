@@ -11,6 +11,8 @@ and n1 and n2 are non-negative integers representing the two nodes in no particu
 order."""
 
 # A Binary tree node
+
+
 class Node:
 
     # Constructor to create a new node
@@ -18,38 +20,45 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
-    
+
 # Function to insert a new node at the beginning
+
+
 def push_right(node, new_data):
     new_node = Node(new_data)
     node.right = new_node
-    return new_data
+    return new_node
 
 # Function to insert a new node at the beginning
+
+
 def push_left(node, new_data):
     new_node = Node(new_data)
     node.left = new_node
-    return new_data
-    
+    return new_node
+
 # Function to find LCA of node1 and node2. The function assumes
 # that both node1 and node2 are present in BST
+
+
 def lca(root, node1, node2):
 
     # Check for value in root
     if root is None:
         return None
-        
+
     # If both node1 and node2 are smaller than root, then LCA
     # lies in left
     if root.data > node1 and root.data > node2:
         return lca(root.left, node1, node2)
-        
+
     # If both node1 and node2 are greater than root, then LCA
     # lies in right
     if root.data < node1 and root.data < node2:
         return lca(root.right, node1, node2)
-        
-    return root
+
+    return root.data
+
 
 def question4(tree, root, node1, node2):
     # Make BST
@@ -64,26 +73,27 @@ def question4(tree, root, node1, node2):
             else:
                 node_list.append(push_left(node, node_data))
         node_data += 1
-    
+
     temp_node = node_list.pop(0)
+
     while temp_node != None:
         node_data = 0
-
-        for value in tree[temp_node.data]:
-            if value:
+        for val in tree[temp_node.data]:
+            if val:
                 if node_data > temp_node.data:
                     node_list.append(push_right(temp_node, node_data))
                 else:
                     node_list.append(push_left(temp_node, node_data))
             node_data += 1
-            
+
         if node_list == []:
             break
         else:
             temp_node = node_list.pop(0)
-        
+
     return lca(node, node1, node2)
 
 
 # Output
-print (question4([[0, 0, 0, 0, 0], [1, 0, 1, 0, 0],[0, 0, 0, 0, 0],[0, 1, 0, 0, 1],[0, 0, 0, 0, 0]], 3, 1, 2))
+print(question4([[0, 0, 0, 0, 0], [1, 0, 1, 0, 0], [
+      0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4))
