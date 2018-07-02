@@ -12,7 +12,7 @@ def question2(a):
     # make sure 'a' has atleast 2 characters
     if len(a) < 2:
         return a
-    
+
     # convert string to lowercase
     text = a.lower()
 
