@@ -7,10 +7,25 @@
 
 
 def question1(s, t):
+    # make sure s is a string
+    if type(s) != str:
+        return "Error, s is not a string!"
+
+    # make sure t is a string
+    if type(s) != str:
+        return "Error, t is not a string!"
 
     # len of s, t
     s_len = len(s)
     t_len = len(t)
+
+    # make sure s has at least as much characters as t
+    if s_len == 0 or s_len < t_len:
+        return False
+
+    # if t is empty, the answer should alwasy be True
+    if t_len == 0:
+        return True
 
     # sort the t string using sorted function
     t_sort = sorted(t)
@@ -24,5 +39,14 @@ def question1(s, t):
 
     return False
 
+# Output
+
+
+print(question1(2, "two"))
+# It should print - Error, s is not a string!
+
+print(question1("ad", "udacity"))
+# It should print - false
 
 print(question1("udacity", "ad"))
+# It should print - true
