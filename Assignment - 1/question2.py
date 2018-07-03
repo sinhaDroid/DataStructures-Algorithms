@@ -38,4 +38,4 @@ print(question2("aa"))
 # Should print - ['aa']
 
 print(question2("palaindromeasfudacity"))
-# Should print (1, ['ala'])
+# Should print - ['ala']
