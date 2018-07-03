@@ -1,4 +1,13 @@
-
+"""
+    Given an undirected graph G, find the minimum spanning tree within G. 
+    A minimum spanning tree connects all vertices in a graph with the smallest 
+    possible total weight of edges. Your function should take in and return an 
+    adjacency list structured like this:
+    { 'A': [('B', 2)],
+      'B': [('A', 2), ('C', 5)], 
+      'C': [('B', 5)]}
+    Vertices are represented as unique strings.
+"""
 
 # function to add an edge to graph
 
@@ -103,6 +112,9 @@ def KruskalMST(graph, vertices, int_vertices):
 
 
 def question3(G):
+    # make sure G is dictionary
+    if type(G) != dict:
+        return "Error: G is not dictionary!"
 
     # G should have more than one node
     if len(G) < 2:
@@ -131,25 +143,35 @@ def question3(G):
 
     return KruskalMST(graph, count, int_vertices)
 
+# Output
+
+
+print(question3(456))
+# Should print - Error: G is not dictionary!
+
+print(question3({}))
+# Should print - G doesn't have enough vertices to form edges
 
 G = {'A': [('B', 2)],
      'B': [('A', 2), ('C', 5)],
      'C': [('B', 5)]}
-
-# G = {'A': [('B', 7), ('D', 5)],
-#      'B': [('A', 7), ('C', 8), ('D', 9), ('E', 7)],
-#      'C': [('B', 8), ('E', 5)],
-#      'D': [('A', 5), ('B', 9), ('E', 15), ('F', 6)],
-#      'E': [('B', 7), ('C', 5), ('D', 15), ('F', 8), ('G', 9)],
-#      'F': [('D', 6), ('E', 8), ('G', 11)],
-#      'G': [('E', 9), ('F', 11)]}
-
-H = {'A': [('D', 5), ('B', 7)],
-     'B': [('A', 7), ('E', 7)],
-     'C': [('E', 5)],
-     'D': [('A', 5), ('F', 6)],
-     'E': [('C', 5), ('B', 7), ('G', 9)],
-     'F': [('D', 6)],
-     'G': [('E', 9)]}
-
 print(question3(G))
+# Should print - Following are the edges in the constructed MST
+# {'A': [('B', 2)], 'C': [('B', 5)], 'B': [('A', 2), ('C', 5)]}
+
+G = {'A': [('B', 7), ('D', 5)],
+     'B': [('A', 7), ('C', 8), ('D', 9), ('E', 7)],
+     'C': [('B', 8), ('E', 5)],
+     'D': [('A', 5), ('B', 9), ('E', 15), ('F', 6)],
+     'E': [('B', 7), ('C', 5), ('D', 15), ('F', 8), ('G', 9)],
+     'F': [('D', 6), ('E', 8), ('G', 11)],
+     'G': [('E', 9), ('F', 11)]}
+print(question3(G))
+# Should print - Following are the edges in the constructed MST
+# {'A': [('D', 5), ('B', 7)],
+#  'B': [('A', 7), ('E', 7)],
+#  'C': [('E', 5)],
+#  'D': [('A', 5), ('F', 6)],
+#  'E': [('C', 5), ('B', 7), ('G', 9)],
+#  'F': [('D', 6)],
+#  'G': [('E', 9)]}
