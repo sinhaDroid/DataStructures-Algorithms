@@ -39,6 +39,10 @@ class LinkedList:
     # Function to find the m elements from the end
 
     def question5(self, head, m):
+        # make sure m is an integer
+        if type(m) != int:
+            return "Error: m is not an integer!"
+
         temp = head
         count = 0
 
@@ -46,12 +50,12 @@ class LinkedList:
             temp = temp.next
             count += 1
 
-        # check if value of n is not more than length of
+        # check if value of m is not more than length of
         # linked list
         if count < m:
-            return
+            return "Error: m is greater than length of linked list!"
 
-        temp = head
+        temp = ll.head
 
         #   get the (count-m+1)th node from the beginning
         for i in range(1, count-m+1):
@@ -69,5 +73,14 @@ ll.insert(30)
 ll.insert(20)
 ll.insert(10)
 
-# Test LinkedList
+# Output
+
+
+print(ll.question5(ll.head, ll))
+# Should print - Error: m is not an integer!
+
+print(ll.question5(ll.head, 7))
+# Should print - Error: m is greater than length of linked list!
+
 print(ll.question5(ll.head, 4))
+# Should print - 20
