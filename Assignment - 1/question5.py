@@ -13,7 +13,7 @@
 """
 
 
-class Node:
+class Node(object):
 
     # Constructor to push a new node in list
     def __init__(self, data):
@@ -39,6 +39,10 @@ class LinkedList:
     # Function to find the m elements from the end
 
     def question5(self, head, m):
+        # make sure m is node
+        if type(head) != Node:
+            return "Error: m is not a node!"
+        
         # make sure m is an integer
         if type(m) != int:
             return "Error: m is not an integer!"
@@ -75,6 +79,9 @@ ll.insert(10)
 
 # Output
 
+
+print(ll.question5(ll, 3))
+# Should print - Error: m is not a node!
 
 print(ll.question5(ll.head, ll))
 # Should print - Error: m is not an integer!
