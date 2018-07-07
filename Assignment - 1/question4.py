@@ -1,14 +1,16 @@
-"""Find the least common ancestor between two nodes on a binary search tree. 
-The least common ancestor is the farthest node from the root that is an ancestor 
-of both nodes. For example, the root is a common ancestor of all nodes on the tree, 
-but if both nodes are descendents of the root's left child, then that left child 
-might be the lowest common ancestor. You can assume that both nodes are in the 
-tree, and the tree itself adheres to all BST properties. The function definition 
-should look like question4(T, r, n1, n2), where T is the tree represented as a 
-matrix, where the index of the list is equal to the integer stored in that node 
-and a 1 represents a child node, r is a non-negative integer representing the root, 
-and n1 and n2 are non-negative integers representing the two nodes in no particular 
-order."""
+"""
+    Find the least common ancestor between two nodes on a binary search tree. 
+    The least common ancestor is the farthest node from the root that is an 
+    ancestor of both nodes. For example, the root is a common ancestor of all 
+    nodes on the tree, but if both nodes are descendents of the root's left child, 
+    then that left child might be the lowest common ancestor. You can assume that 
+    both nodes are in the tree, and the tree itself adheres to all BST properties. 
+    The function definition should look like question4(T, r, n1, n2), where T is the 
+    tree represented as a matrix, where the index of the list is equal to the integer 
+    stored in that node and a 1 represents a child node, r is a non-negative integer 
+    representing the root, and n1 and n2 are non-negative integers representing the 
+    two nodes in no particular order.
+"""
 
 # A Binary tree node
 
@@ -61,10 +63,20 @@ def lca(root, node1, node2):
 
 
 def question4(tree, root, node1, node2):
+    
+    if root is None:
+        return "Error: root value is null!"
+    
     # Make BST
     node = Node(root)
     node.left, node.right = None, None
     node_data, node_list = 0, []
+
+    if type(tree) != list:
+        return "Error: tree is not matrix list!"
+
+    if root >= len(tree):
+        return "Error: root value is greater than size of tree matrix!"
 
     for value in tree[root]:
         if value:
@@ -73,6 +85,9 @@ def question4(tree, root, node1, node2):
             else:
                 node_list.append(push_left(node, node_data))
         node_data += 1
+
+    if len(node_list) <= 0:
+        return "Error: root value is not present in tree!"
 
     temp_node = node_list.pop(0)
 
@@ -96,4 +111,4 @@ def question4(tree, root, node1, node2):
 
 # Output
 print(question4([[0, 0, 0, 0, 0], [1, 0, 1, 0, 0], [
-      0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4))
+      0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 4, 1, 4))
