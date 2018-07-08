@@ -15,7 +15,7 @@
 # A Binary tree node
 
 
-class Node:
+class Node(object):
 
     # Constructor to create a new node
     def __init__(self, data):
@@ -110,5 +110,15 @@ def question4(tree, root, node1, node2):
 
 
 # Output
+
+
+print(question4(7, 4, 1, 4))
+# Should print - tree is not matrix list!
+
+# Should print - root value is not present in tree!
+print(question4([[0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [
+      0, 0, 0, 0, 0], [1, 0, 0, 0, 1], [0, 0, 0, 0, 0]], 4, 1, 4))
+
 print(question4([[0, 0, 0, 0, 0], [1, 0, 1, 0, 0], [
-      0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 4, 1, 4))
+      0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4))
+# Should print - 3
