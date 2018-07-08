@@ -175,3 +175,28 @@ print(question3(G))
 #  'E': [('C', 5), ('B', 7), ('G', 9)],
 #  'F': [('D', 6)],
 #  'G': [('E', 9)]}
+
+
+# Explanation
+
+"""
+    Given a connected and undirected graph, a spanning tree of that graph is a subgraph that
+    is a tree and connects all the vertices together. A single graph can have many different 
+    spanning trees. To solve this problem, we use algorithm called Kruskal's algorithm. 
+    The basic idea is to sort the edges by its weight and starts include the edge without 
+    causing a cycle in the graph. A minimum spanning tree has (V – 1) edges where V is the 
+    number of vertices in the given graph. One way to make sure there are no cycle in the graph 
+    is by keep track of each vertice in a list of sets. If the new edge will connect two vertices 
+    within the same set, we will not include it. Else, we include the set and take union of the 
+    sets. Union joins two subsets into a single subset. This algorithm has may parts. 
+    Union-Find Algorithm can be used to check whether an undirected graph contains cycle or not. 
+    First, generate list of edges will take O(E) time and O(E) space. 
+    Second, sort the edges by weight will take O(Elog(E)) time and O(E) space. 
+    Third, loop through each edges, find the indices, and merge sets will take 
+    worst case O(E*V) time and O(V) space. 
+    Lastly, we have to convert the edges back to the required output graph structure 
+    that will take O(E) time and O(V) space. 
+    Overall this algorithm will take O(E*V) time and O(E) space. 
+    However, the overall time complexity can be further reduced to O(E*log(V)) time 
+    with "disjoint-set data structure".
+"""
