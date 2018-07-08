@@ -91,3 +91,16 @@ print(ll.question5(ll.head, 7))
 
 print(ll.question5(ll.head, 4))
 # Should print - 20
+
+
+# Explanation
+
+"""
+    To find mth element in Single Linked List. Create and insert node to form Single Linked List.
+    Given a Linked List and a number n. To solve this problem, traverse the linked list twice. 
+    Calculate the length of the list in first traverse. Let the length be len. Then traverse again 
+    to get the element from the back using (len-n+1) and print the node. This method will return the 
+    value at the nth node from end of the Linked List. 
+    The time will still be O(n) for traverse through Linked List twice. 
+    Since we only store the length, the space complexity will be O(1).
+"""
