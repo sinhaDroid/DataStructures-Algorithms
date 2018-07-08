@@ -122,3 +122,21 @@ print(question4([[0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [
 print(question4([[0, 0, 0, 0, 0], [1, 0, 1, 0, 0], [
       0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0]], 3, 1, 4))
 # Should print - 3
+
+
+# Explanation
+
+"""
+    Given matrix is representing as s BST. 'R' is a valid BST node and 'n1' and 'n2' representing 
+    two nodes in particular order. We will check for the edge case when n1 and/or n2 are not in the 
+    tree. We can simply traverse the BST to check if the value exist in the tree. This part will 
+    take same time and space complexity as the main algorithm, so it won't increase the overall 
+    complexities. We will traverse through the tree from top-down and with the BST properties, the 
+    least common ancestor between two nodes is just the first node we meet with the value between 
+    n1 and n2. We will go left if the current node is greater than both n1 and n2, right if the current 
+    node is less than both n1 and n2, else the node is the least common ancestor. 
+    Since the worst case we will traverse is the depth of a binary tree. 
+    The time complexity will be O(log(n)) (if balanced, else it will be O(n)) 
+    where n is the number of elements in the tree. 
+    The space complexity is O(1) because we only keep track of the current node at the traversal stage.
+"""
