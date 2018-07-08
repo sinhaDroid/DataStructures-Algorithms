@@ -39,3 +39,18 @@ print(question2("aa"))
 
 print(question2("palaindromeasfudacity"))
 # Should print - ['ala']
+
+
+# Explanation
+
+"""
+    To find a longest palindromic substring conained in string 'a'. It should have only
+    string and must have atleast 2 characters. Checking the palindrome will take worst 
+    case O(n) time and can be started from the center. Since there are only O(n) location
+    any palindromic substring can be rooted, we can easily check all possible combinations 
+    and will only take order O(n^2) time. 
+    Therefore, the time complexity of this algorithm is O(n^2).
+    Excluding the space used to load 'a', we only need to store left and right index of the 
+    longest palindromic substring. 
+    Therefore, the space complexity of this algorithm is O(1).
+"""
